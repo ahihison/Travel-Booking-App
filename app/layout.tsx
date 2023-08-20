@@ -1,6 +1,8 @@
+import { Nunito } from "next/font/google";
+import OnlyClient from "./components/OnlyClient";
+import RegisterModal from "./components/modals/RegisterModal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
-import { Nunito } from "next/font/google";
 
 export const metadata = {
   title: "Travel Booking",
@@ -17,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={fonts.className}>
-        <Navbar />
+        <OnlyClient>
+          <RegisterModal />
+
+          <Navbar />
+        </OnlyClient>
         {children}
       </body>
     </html>
