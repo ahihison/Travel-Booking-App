@@ -3,6 +3,7 @@ import OnlyClient from "./components/OnlyClient";
 import RegisterModal from "./components/modals/RegisterModal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
+import ToasterProvider from "./providers/ToasterProvider";
 
 export const metadata = {
   title: "Travel Booking",
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={fonts.className}>
         <OnlyClient>
+          <ToasterProvider />
           <RegisterModal />
 
           <Navbar />

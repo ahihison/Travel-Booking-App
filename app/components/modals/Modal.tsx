@@ -93,9 +93,10 @@ const Modal = ({
                   <Button
                     label={actionLabel}
                     disabled={disabled}
-                    onClick={hanleSubmit}
+                    onClick={onSubmit}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
