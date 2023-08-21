@@ -1,5 +1,5 @@
 "use client";
-import { IconType } from "react-icons";
+import { IconType, icons } from "react-icons";
 interface ButtonProps {
   label: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -29,8 +29,8 @@ const Button = ({
           ${small ? "py-1" : "py-3"}
           ${small ? "text-sm" : "text-md"}
           ${small ? "font-medium" : "font-bold"}
-          ${small ? "border-[1px]" : "border-[2px]"}
-          
+          ${small ? "border-[1px]" : "border-[1px]"}
+          ${Icon ? "hover:bg-neutral-100" : ""}
           `}
       >
         {Icon && <Icon size={24} className="absolute left-4 top-3" />}
