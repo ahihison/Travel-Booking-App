@@ -4,6 +4,7 @@ import RegisterModal from "./components/modals/RegisterModal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModal from "./components/modals/LoginModal";
 
 export const metadata = {
   title: "Travel Booking",
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={fonts.className}>
         <OnlyClient>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
 
           <Navbar />
