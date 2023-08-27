@@ -10,6 +10,7 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
+import { signIn } from "next-auth/react";
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ const RegisterModal = () => {
       });
   };
   const bodyContent = (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <Heading title="Welcome to Airbnb" />
       <Input
         id="email"
@@ -69,19 +70,21 @@ const RegisterModal = () => {
     </div>
   );
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3 ">
-      <hr />
+    <div className="flex flex-col gap-2 mt-3 ">
+      <div className="before:content-[''] before:mr-2 after:content-[''] after:ml-2 before:w-full before:h-[1px] before:block flex  after:h-[1px]  after:w-full after:block before:bg-neutral-300 after:bg-neutral-300 items-center">
+        or
+      </div>
       <Button
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row items-center gap-2 justify-center">
