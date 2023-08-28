@@ -107,24 +107,24 @@ const Categories = () => {
   const startX = useRef(0);
   const startScrollLeft = useRef(0);
 
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null); // Tạo một useRef cho phần tử chứa danh sách
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
+  const scrollContainer = scrollContainerRef.current;
   const handleScroll = () => {
-    const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-      console.log(scrollLeft);
+
       setCanScrollPrev(scrollLeft > 0);
 
-      setCanScrollNext(scrollLeft < scrollWidth - clientWidth);
+      setCanScrollNext(Math.floor(scrollLeft + 1) < scrollWidth - clientWidth);
     }
   };
 
   useEffect(() => {
     handleScroll(); // Initial check
-    const scrollContainer = scrollContainerRef.current;
+    // const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       scrollContainer.addEventListener("scroll", handleScroll);
 
@@ -144,26 +144,26 @@ const Categories = () => {
 
   const dragging = (e: any) => {
     if (!isDragging) return;
-    const scrollContainer = e.currentTarget; // Lấy phần tử đang chứa chứa scrollable content
+    const scrollContainer = e.currentTarget;
 
     scrollContainer.scrollLeft =
-      startScrollLeft.current - e.pageX + startX.current; // Thay đổi giá trị này để điều chỉnh khoảng cách cuộn
+      startScrollLeft.current - e.pageX + startX.current;
   };
   const handlePrev = () => {
-    const scrollContainer = scrollContainerRef.current;
+    // const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-        scrollContainerRef.current.scrollLeft -= Math.floor(clientWidth / 2); // Thay đổi giá trị này để điều chỉnh khoảng cách cuộn
+        const { clientWidth } = scrollContainer;
+        scrollContainerRef.current.scrollLeft -= Math.floor(clientWidth);
       }
     }
   };
   const handleNext = () => {
-    const scrollContainer = scrollContainerRef.current;
+    // const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       const { clientWidth } = scrollContainer;
       if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft += Math.floor(clientWidth / 2); // Thay đổi giá trị này để điều chỉnh khoảng cách cuộn
+        scrollContainerRef.current.scrollLeft += Math.floor(clientWidth);
       }
     }
   };
