@@ -4,6 +4,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { use, useCallback, useEffect } from "react";
 import { IconType } from "react-icons";
 import qs from "query-string";
+import { GrFormPrevious } from "react-icons/gr";
+
 interface CategoryBoxProps {
   icon: IconType;
   label: string;
@@ -19,7 +21,6 @@ const CategoryBox = ({
   const router = useRouter();
   const params = useSearchParams();
 
-  useEffect(() => {}, [params]);
   const handleClick = useCallback(() => {
     let currentQuery = {};
     if (params) {
@@ -41,10 +42,11 @@ const CategoryBox = ({
     );
     router.push(url);
   }, [label, params, router]);
+
   return (
     <div
       onClick={handleClick}
-      className={`flex flex-col gap-2 p-3 items-center justify-center border-b-2 hover:text-neutral-800 cursor-pointer transition ${
+      className={`flex flex-col gap-3 p-3 items-center justify-center border-b-2 hover:text-neutral-800 hover:cursor-pointer transition ${
         selected ? "border-b-neutral-800" : "border-b-transparent"
       } ${selected ? "text-neutral-800" : "text-neutral-500"} `}
     >

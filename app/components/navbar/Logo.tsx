@@ -7,6 +7,7 @@ const Logo = () => {
   return (
     <div>
       <Image
+        onClick={() => router.push("/")}
         alt="logo"
         src="/images/logo.png"
         height="100"
