@@ -1,4 +1,8 @@
 "use client";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { BsSnow } from "react-icons/bs";
+import { FaSkiing } from "react-icons/fa";
 import {
   GiBarn,
   GiBoatFishing,
@@ -7,21 +11,17 @@ import {
   GiCaveEntrance,
   GiForestCamp,
   GiIsland,
+  GiMushroomHouse,
   GiWindmill,
 } from "react-icons/gi";
-import { MdOutlineVilla } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
+import { IoDiamond } from "react-icons/io5";
+import { LiaGolfBallSolid } from "react-icons/lia";
+import { MdNavigateNext, MdOutlineVilla } from "react-icons/md";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import CategoryBox from "../CategoryBox";
 import Container from "../Container";
-import { usePathname, useSearchParams } from "next/navigation";
-import { FaSkiing } from "react-icons/fa";
-import { BsSnow } from "react-icons/bs";
-import { IoDiamond } from "react-icons/io5";
-import { MdNavigateNext } from "react-icons/md";
-import { GrFormPrevious } from "react-icons/gr";
-import { useEffect, useRef, useState } from "react";
-import { set } from "react-hook-form";
-const categoriesList = [
+export const categoriesList = [
   {
     label: "Beach",
     icon: TbBeach,
@@ -96,6 +96,16 @@ const categoriesList = [
     label: "Lux",
     icon: IoDiamond,
     description: "This property is luxurious!",
+  },
+  {
+    label: "Room",
+    icon: GiMushroomHouse,
+    description: "This property has a rooms!",
+  },
+  {
+    label: "Golfing",
+    icon: LiaGolfBallSolid,
+    description: "This property has a golf!",
   },
 ];
 const Categories = () => {
@@ -205,7 +215,7 @@ const Categories = () => {
         ))}
       </div>
       {canScrollNext && (
-        <div className=" absolute top-[45%] translate-y-[50%] lg:right-16 right-1  bg-white opacity-70 border-none p-3">
+        <div className=" absolute top-[45%] translate-y-[50%] lg:right-12 right-1  bg-white opacity-70 border-none p-3">
           <MdNavigateNext
             onClick={() => {
               handleNext();

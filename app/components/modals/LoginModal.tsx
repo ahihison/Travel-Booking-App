@@ -18,6 +18,10 @@ const LoginModal = () => {
   const loginModal = useLoginModal();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const toogle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
   const {
     register,
     handleSubmit,
@@ -86,12 +90,12 @@ const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row items-center gap-2 justify-center">
-          <div>Already have an account?</div>
+          <div>First time using Airbnb?</div>
           <div
             className="text-neutral-800 hover:underline cursor-pointer font-bold"
-            onClick={registerModal.onClose}
+            onClick={toogle}
           >
-            Login
+            Create an account.
           </div>
         </div>
       </div>
