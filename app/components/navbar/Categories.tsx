@@ -2,7 +2,7 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BsSnow } from "react-icons/bs";
-import { FaSkiing } from "react-icons/fa";
+import { FaSkiing, FaSwimmingPool } from "react-icons/fa";
 import {
   GiBarn,
   GiBoatFishing,
@@ -11,16 +11,18 @@ import {
   GiCaveEntrance,
   GiForestCamp,
   GiIsland,
+  GiMountains,
   GiMushroomHouse,
   GiWindmill,
 } from "react-icons/gi";
-import { GrFormPrevious } from "react-icons/gr";
+import { GrFormPrevious, GrGamepad } from "react-icons/gr";
 import { IoDiamond } from "react-icons/io5";
 import { LiaGolfBallSolid } from "react-icons/lia";
 import { MdNavigateNext, MdOutlineVilla } from "react-icons/md";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import CategoryBox from "../CategoryBox";
 import Container from "../Container";
+import { DiDigitalOcean } from "react-icons/di";
 export const categoriesList = [
   {
     label: "Beach",
@@ -107,6 +109,26 @@ export const categoriesList = [
     icon: LiaGolfBallSolid,
     description: "This property has a golf!",
   },
+  {
+    label: "Amazing Pools",
+    icon: FaSwimmingPool,
+    description: "This property has a pool!",
+  },
+  {
+    label: "Play",
+    icon: GrGamepad,
+    description: "This property has a place to play!",
+  },
+  {
+    label: "Country Side",
+    icon: GiMountains,
+    description: "This property has a country side!",
+  },
+  {
+    label: "Lake",
+    icon: DiDigitalOcean,
+    description: "This property has a country side!",
+  },
 ];
 const Categories = () => {
   const param = useSearchParams();
@@ -120,7 +142,7 @@ const Categories = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
+  const [canScrollNext, setCanScrollNext] = useState(false);
   const scrollContainer = scrollContainerRef.current;
   const handleScroll = () => {
     if (scrollContainer) {
@@ -160,7 +182,6 @@ const Categories = () => {
       startScrollLeft.current - e.pageX + startX.current;
   };
   const handlePrev = () => {
-    // const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       if (scrollContainerRef.current) {
         const { clientWidth } = scrollContainer;
@@ -169,7 +190,6 @@ const Categories = () => {
     }
   };
   const handleNext = () => {
-    // const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       const { clientWidth } = scrollContainer;
       if (scrollContainerRef.current) {

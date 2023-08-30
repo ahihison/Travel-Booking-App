@@ -1,10 +1,9 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { use, useCallback, useEffect } from "react";
-import { IconType } from "react-icons";
 import qs from "query-string";
-import { GrFormPrevious } from "react-icons/gr";
+import { useCallback } from "react";
+import { IconType } from "react-icons";
 
 interface CategoryBoxProps {
   icon: IconType;
