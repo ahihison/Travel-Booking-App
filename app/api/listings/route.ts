@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     price,
     category,
     roomCount,
-    bathroomCount,
+    bathRoomCount,
     guestCount,
     location,
   } = body;
@@ -24,19 +24,36 @@ export async function POST(request: Request) {
       return NextResponse.error();
     }
   });
+ const datatemp = {
+  data: {
+    title,
+    description,
+    imageSrc,
+    category,
+    roomCount,
+    bathRoomCount,
+    guestCount,
+    locationValue: location.value,
+    price: parseInt(price, 10),
+    userId: currentUser.id,
+  },
+ }
+ console.log("body", body)
+  console.log(datatemp)
   const listing = await prisma.listing.create({
     data: {
       title,
       description,
       imageSrc,
-      price: parseInt(price, 10),
       category,
       roomCount,
-      bathRoomCount: bathroomCount,
+      bathRoomCount,
       guestCount,
       locationValue: location.value,
+      price: parseInt(price, 10),
       userId: currentUser.id,
     },
   });
+  
   return NextResponse.json(listing);
 }
